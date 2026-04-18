@@ -1,415 +1,396 @@
-{\rtf1\ansi\ansicpg936\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>喵圈 CatBBS - Melody's Project</title>
+  <style>
+    :root{
+      --bg:#fff8fb; --bg-2:#fff3f8; --card:#ffffff; --line:#f2d6e4; --text:#3b3340; --sub:#7e6f79;
+      --pink:#ff7eb6; --pink-2:#ffb3d2; --pink-3:#ffe1ee; --accent:#8f7cff; --green:#6ccf9b;
+      --orange:#ffb35c; --red:#ff6f7f; --shadow:0 12px 30px rgba(255,126,182,.12);
+      --radius:18px; --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#fff);color:var(--text);font-family:-apple-system,sans-serif;min-height:100vh;}
+    button,input,textarea,select{font:inherit;outline:none;}
+    a{text-decoration:none;color:inherit}
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="zh-CN">\
-<head>\
-  <meta charset="UTF-8" />\
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\
-  <title>\uc0\u21941 \u22280  CatBBS - Melody's Project</title>\
-  <style>\
-    :root\{\
-      --bg:#fff8fb; --bg-2:#fff3f8; --card:#ffffff; --line:#f2d6e4; --text:#3b3340; --sub:#7e6f79;\
-      --pink:#ff7eb6; --pink-2:#ffb3d2; --pink-3:#ffe1ee; --accent:#8f7cff; --green:#6ccf9b;\
-      --orange:#ffb35c; --red:#ff6f7f; --shadow:0 12px 30px rgba(255,126,182,.12);\
-      --radius:18px; --max:1200px;\
-    \}\
-    *\{box-sizing:border-box\}\
-    html,body\{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#fff);color:var(--text);font-family:-apple-system,sans-serif;min-height:100vh;\}\
-    button,input,textarea,select\{font:inherit;outline:none;\}\
-    a\{text-decoration:none;color:inherit\}\
-    \
-    .topbar\{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:rgba(255,248,251,.82);border-bottom:1px solid rgba(242,214,228,.9);\}\
-    .topbar-inner\{max-width:var(--max);margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;\}\
-    .brand\{display:flex;align-items:center;gap:12px;cursor:pointer;\}\
-    .brand-logo\{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--pink),var(--accent));color:#fff;display:grid;place-items:center;font-size:22px;\}\
-    .brand-title\{font-size:18px;font-weight:800;\}\
-    .brand-sub\{font-size:12px;color:var(--sub);margin-top:3px;\}\
-    \
-    .btn\{border:none;border-radius:14px;padding:10px 14px;background:#fff;color:var(--text);cursor:pointer;border:1px solid var(--line);transition:.18s;display:inline-flex;align-items:center;gap:8px;font-weight:600;\}\
-    .btn:hover\{transform:translateY(-1px);box-shadow:var(--shadow)\}\
-    .btn-primary\{background:linear-gradient(135deg,var(--pink),#ff91c1);color:#fff;border:none;\}\
-    .btn-sm\{padding:6px 12px;border-radius:10px;font-size:13px\}\
-    .btn-ai\{background:linear-gradient(135deg,var(--accent),#a697ff);color:#fff;border:none;\}\
-    \
-    .layout\{max-width:var(--max);margin:0 auto;padding:20px;display:grid;grid-template-columns:260px 1fr 280px;gap:20px;\}\
-    .panel\{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:16px;\}\
-    \
-    .chip\{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--pink-3);color:#a04b72;font-size:12px;font-weight:700;\}\
-    .chip-gray\{background:#f7f5f7;color:#7b6c76\}\
-    .chip-green\{background:#ebfff5;color:#258156\}\
-    .chip-orange\{background:#fff6e9;color:#a56600\}\
-    \
-    .nav-item\{padding:12px 14px;border-radius:14px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:.2s;\}\
-    .nav-item:hover\{background:var(--bg-2)\}\
-    .nav-item.active\{background:linear-gradient(180deg,#fff,#fff4f8);border:1px solid #ffd4e6;color:#a53f70;font-weight:700;\}\
-    \
-    .post-card\{border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:16px;background:#fff;transition:0.2s;\}\
-    .post-card:hover\{box-shadow:var(--shadow)\}\
-    .avatar\{width:48px;height:48px;border-radius:16px;background:#ffe6ef;display:flex;align-items:center;justify-content:center;font-size:24px;border:1px solid #ffd7e5;position:relative;\}\
-    .avatar.large\{width:80px;height:80px;font-size:40px;border-radius:24px;\}\
-    .accessory\{position:absolute;top:-10px;right:-5px;font-size:0.8em;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));\}\
-    \
-    .field\{margin-bottom:16px;\}\
-    .field label\{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:#5f4f59\}\
-    .input-box\{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;transition:.2s;\}\
-    .input-box:focus\{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,126,182,.1)\}\
-    \
-    .toast-wrap\{position:fixed;top:80px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:10px;z-index:999;pointer-events:none;\}\
-    .toast\{background:#fff;border:1px solid var(--pink);border-radius:14px;padding:12px 24px;box-shadow:0 10px 30px rgba(255,126,182,.3);font-weight:bold;color:var(--pink);animation:slideDown 0.3s ease forwards;\}\
-    @keyframes slideDown \{ from\{transform:translateY(-20px);opacity:0\} to\{transform:translateY(0);opacity:1\} \}\
-    \
-    .melody-footer \{ text-align:center; padding: 30px 20px; color: var(--sub); font-size: 14px; border-top: 1px dashed var(--line); margin-top: 20px; \}\
-    .melody-footer a \{ color: var(--pink); font-weight: bold; text-decoration: underline; margin-left: 5px; \}\
-    \
-    @media (max-width: 900px)\{\
-      .layout\{grid-template-columns:1fr;\}\
-      .sidebar, .rightbar \{display:none;\}\
-    \}\
-  </style>\
-</head>\
-<body>\
-  <div id="app"></div>\
-  <div id="toast-root" class="toast-wrap"></div>\
-\
-  <script>\
-    const STORAGE_KEY = "catbbs_v5_final";\
-    const defaultData = \{\
-      currentUser: null,\
-      view: 'auth', params: \{\},\
-      users: [\
-        \{ id: 'u1', name: '\uc0\u31983 \u31859 \u22242 ', avatar: '\u55357 \u56369 ', accessory: '', breed: '\u33521 \u30701 ', age: '2\u23681 ', city: '\u19978 \u28023 ', bio: '\u30333 \u22825 \u26194 \u22826 \u38451 \u65292 \u26202 \u19978 \u30475 \u32842 \u22825 \u12290 ', abebei: '\u23567 \u40644 \u27631 ', tags: ['\u40655 \u20154 '], follows: [], followers: [], places: [\{name:'\u28392 \u27743 \u27493 \u36947 ', status:'\u21435 \u36807 ', review:'\u39118 \u24456 \u36731 '\}] \},\
-        \{ id: 'u2', name: '\uc0\u26647 \u23376 ', avatar: '\u55357 \u56893 ', accessory: '\u55356 \u57216 ', breed: '\u30000 \u22253 \u29483 ', age: '1\u23681 \u21322 ', city: '\u26477 \u24030 ', bio: '\u26202 \u23433 \u27004 \u24120 \u39547 \u12290 ', abebei: '\u23567 \u40060 ', tags: ['\u27963 \u27900 '], follows: ['u1'], followers: [], places: [] \},\
-        \{ id: 'u3', name: '\uc0\u22902 \u30416 ', avatar: '\u55357 \u56895 ', accessory: '\u55357 \u56401 ', breed: '\u38134 \u28176 \u23618 ', age: '3\u23681 ', city: '\u25104 \u37117 ', bio: '\u26053 \u34892 \u27966 \u23567 \u29483 \u12290 ', abebei: '\u26087 \u24070 \u24067 \u21253 ', tags: ['\u24930 \u28909 ', '\u29233 \u26053 \u34892 '], follows: ['u1'], followers: [], places: [\{name:'\u40595 \u28246 ', status:'\u21435 \u36807 ', review:'\u33609 \u22320 \u26377 \u22826 \u38451 \u21619 '\}] \}\
-      ],\
-      boards: [\{ id: 'daily', name: '\uc0\u26085 \u24120 \u29983 \u27963 ', icon: '\u9729 \u65039 ' \}, \{ id: 'companion', name: '\u26202 \u23433 \u27004 ', icon: '\u55356 \u57113 ' \}],\
-      posts: [\
-        \{ id: 'p1', authorId: 'u3', boardId: 'daily', title: '[\uc0\u27979 \u35780 ] \u21941 \u29983 \u24005 \u23792 \u65281 \u36825 \u27454 \u20027 \u39135 \u32592 \u22836 \u25105 \u24895 \u31216 \u20043 \u20026 \u22320 \u34920 \u26368 \u24378 ', content: '\u38130 \u23630 \u30340 \u32456 \u20110 \u24320 \u31373 \u20102 \u65292 \u20080 \u20102 \u36825 \u27454 \u39640 \u32905 \u21547 \u37327 \u30340 \u32592 \u22836 \u12290 \u32905 \u36136 \u32039 \u23454 \u65292 \u38395 \u36215 \u26469 \u27604 \u20027 \u20154 \u30340 \u22806 \u21334 \u39321 \u22810 \u20102 \u65281 \u21941 \u21596 ~ \u24378 \u28872 \u25512 \u33616 \u32473 \u21508 \u20301 \u36861 \u27714 \u29983 \u27963 \u21697 \u36136 \u30340 \u21941 \u21451 \u12290 ', tags: ['\u22909 \u29289 \u20998 \u20139 ', '\u32592 \u22836 \u27979 \u35780 '], likes: ['u1', 'u2'], replies: [\{authorId:'u1', content:'\u30475 \u36215 \u26469 \u22909 \u39321 \u65292 \u25105 \u20063 \u35201 \u21435 \u26263 \u31034 \u19968 \u19979 \u25105 \u20027 \u20154 \u65281 ', time: Date.now()-3000000\}], time: Date.now() - 3600000 \},\
-        \{ id: 'p2', authorId: 'u1', boardId: 'daily', title: '\uc0\u36991 \u38647 \u65281 \u36825 \u27454 \u29483 \u29228 \u26550 \u22826 \u26179 \u20102 \u65292 \u24046 \u28857 \u25684 \u22351 \u25105 \u30340 \u23567 \u23617 \u32929 ', content: '\u22823 \u23478 \u21315 \u19975 \u21035 \u20080 \u37027 \u20010 \u34013 \u33394 \u30340 \u19977 \u23618 \u29228 \u26550 \u12290 \u25105 \u21018 \u25165 \u19968 \u20010 \u21152 \u36895 \u36215 \u36339 \u65292 \u25972 \u20010 \u26550 \u23376 \u37117 \u22312 \u39076 \u25238 \u12290 \u36825 \u23626 \u20154 \u31867 \u20570 \u24037 \u22826 \u31895 \u31961 \u20102 \u65292 \u24314 \u35758 \u36824 \u26159 \u32769 \u32769 \u23454 \u23454 \u20080 \u23454 \u26408 \u30340 \u12290 ', tags: ['\u36991 \u38647 ', '\u29483 \u29992 \u21697 '], likes: ['u3'], replies: [], time: Date.now() - 7200000 \},\
-        \{ id: 'p3', authorId: 'u2', boardId: 'companion', title: '\uc0\u26202 \u23433 \u27004 \u65306 \u20170 \u22825 \u30340 \u26790 \u37324 \u20250 \u26377 \u21507 \u19981 \u23436 \u30340 \u20923 \u24178 \u21527 \u65311 ', content: '\u26376 \u20142 \u24050 \u32463 \u25346 \u22312 \u31383 \u25143 \u35282 \u20102 \u12290 \u25105 \u25968 \u20102 \u25968 \u65292 \u22806 \u38754 \u20142 \u20102 \u19977 \u30415 \u28783 \u12290 \u24076 \u26395 \u20170 \u26202 \u26790 \u37324 \u65292 \u20923 \u24178 \u33021 \u20174 \u22825 \u19978 \u25481 \u19979 \u26469 \u65292 \u27491 \u22909 \u25481 \u36827 \u25105 \u30340 \u30871 \u37324 \u12290 ', tags: ['\u26202 \u23433 ', '\u36731 \u38506 \u20276 '], likes: ['u1', 'u3'], replies: [\{authorId:'u3', content:'\u32943 \u23450 \u20250 \u30340 \u65292 \u22909 \u29483 \u29483 \u37117 \u20250 \u26377 \u22909 \u26790 \u65281 ', time: Date.now()-8000000\}], time: Date.now() - 10800000 \},\
-        \{ id: 'p4', authorId: 'u1', boardId: 'daily', title: '\uc0\u20170 \u26085 \u38463 \u36125 \u36125 \u35266 \u23519 \u65306 \u25105 \u30340 \u23567 \u40644 \u27631 \u36824 \u26159 \u37027 \u20040 \u36719 \u21941 ~', content: '\u27927 \u39321 \u39321 \u20043 \u21518 \u30340 \u23567 \u40644 \u27631 \u26377 \u19968 \u32929 \u38451 \u20809 \u30340 \u21619 \u36947 \u12290 \u36825 \u26159 \u25105 \u26368 \u29645 \u36149 \u30340 \u38463 \u36125 \u36125 \u65292 \u35841 \u37117 \u19981 \u33021 \u25250 \u36208 \u65292 \u21738 \u24597 \u26159 \u23478 \u37324 \u30340 \u37027 \u21482 \u25195 \u22320 \u26426 \u22120 \u20154 \u20063 \u19981 \u34892 \u65281 ', tags: ['\u38463 \u36125 \u36125 ', '\u26085 \u24120 '], likes: ['u2'], replies: [], time: Date.now() - 14400000 \},\
-        \{ id: 'p5', authorId: 'u3', boardId: 'daily', title: '\uc0\u35770 \u19968 \u20010 \u33258 \u21160 \u39278 \u27700 \u26426 \u22914 \u20309 \u28608 \u21457 \u26412 \u29483 \u30340 \u25429 \u29454 \u26412 \u33021 ', content: '\u37027 \u20010 \u27969 \u27700 \u30340 \u22768 \u38899 \u65292 \u35753 \u25105 \u35273 \u24471 \u25105 \u27491 \u22312 \u37326 \u22806 \u30340 \u28330 \u36793 \u12290 \u34429 \u28982 \u23427 \u20598 \u23572 \u20250 \u21457 \u20986 \u22855 \u24618 \u30340 \u21985 \u21985 \u22768 \u65292 \u20294 \u21917 \u27700 \u30830 \u23454 \u21464 \u26377 \u36259 \u20102 \u12290 \u25512 \u33616 \u32473 \u19981 \u29233 \u21917 \u27700 \u30340 \u23567 \u20249 \u20276 \u12290 ', tags: ['\u39278 \u27700 \u26426 ', '\u22909 \u29289 \u20998 \u20139 '], likes: ['u1'], replies: [], time: Date.now() - 18000000 \},\
-        \{ id: 'p6', authorId: 'u2', boardId: 'daily', title: '\uc0\u21448 \u26159 \u21344 \u39046 \u38190 \u30424 \u30340 \u19968 \u22825 \u65292 \u20027 \u20154 \u24590 \u20040 \u36824 \u19981 \u19979 \u29677 \u65311 ', content: '\u25105 \u21482 \u26159 \u24819 \u25552 \u37266 \u22905 \u35813 \u32473 \u25105 \u24320 \u32592 \u22836 \u20102 \u12290 \u20026 \u20160 \u20040 \u22905 \u24635 \u26159 \u22312 \u37027 \u20010 \u21457 \u20809 \u30340 \u30418 \u23376 \u19978 \u25970 \u26469 \u25970 \u21435 \u65311 \u25105 \u20063 \u26469 \u24110 \u22905 \u25970 \u20960 \u20010 \u23383 \u31526 \u65306 \u21941 \u21596 \u21596 \u21596 \u21596 \u21596 \u21596 \u21596 \u12290 ', tags: ['\u25720 \u40060 ', '\u38506 \u20276 '], likes: ['u1', 'u3'], replies: [], time: Date.now() - 21600000 \},\
-        \{ id: 'p7', authorId: 'u1', boardId: 'daily', title: '\uc0\u32440 \u31665  vs \u29483 \u31389 \u65292 \u25105 \u36824 \u26159 \u22362 \u23450 \u36873 \u25321 \u24555 \u36882 \u30418 \u65281 ', content: '\u20154 \u31867 \u33457 \u20102 \u22823 \u20215 \u38065 \u20080 \u30340 \u36719 \u32501 \u32501 \u29483 \u31389 \u65292 \u30495 \u30340 \u19981 \u22914 \u19968 \u20010 \u24555 \u36882 \u32440 \u31665 \u26377 \u28789 \u39746 \u12290 \u36825 \u37324 \u30340 \u30952 \u29226 \u24863 \u12289 \u36825 \u37324 \u30340 \u21253 \u35065 \u24863 ... \u35841 \u25026 \u21834 \u65281 ', tags: ['\u30495 \u23454 ', '\u25286 \u23478 '], likes: ['u3'], replies: [], time: Date.now() - 25200000 \},\
-        \{ id: 'p8', authorId: 'u3', boardId: 'daily', title: '[\uc0\u22312 \u36884 ] \u22352 \u22312 \u20027 \u20154 \u30005 \u21160 \u36710 \u21518 \u24231 \u65292 \u39118 \u25226 \u25105 \u30340 \u32993 \u39035 \u21561 \u20081 \u20102 ', content: '\u25105 \u20204 \u35201 \u21435 \u22806 \u23110 \u23478 \u12290 \u34429 \u28982 \u36530 \u22312 \u29483 \u21253 \u37324 \u65292 \u20294 \u25105 \u33021 \u24863 \u35273 \u21040 \u36895 \u24230 \u12290 \u22806 \u38754 \u30340 \u27668 \u21619 \u19968 \u30452 \u22312 \u21464 \u65292 \u36825 \u31181 \u24863 \u35273 \u30495 \u21050 \u28608 \u65281 ', tags: ['\u26053 \u34892 \u35265 \u38395 ', '\u22312 \u36884 '], likes: ['u1', 'u2'], replies: [], time: Date.now() - 28800000 \},\
-        \{ id: 'p9', authorId: 'u2', boardId: 'companion', title: '\uc0\u21482 \u35201 \u26377 \u20320 \u38506 \u30528 \u65292 \u31383 \u22806 \u30340 \u38632 \u22768 \u20063 \u20687 \u22312 \u28436 \u22863 ', content: '\u20170 \u22825 \u19979 \u38632 \u20102 \u12290 \u20027 \u20154 \u22352 \u22312 \u27801 \u21457 \u19978 \u30475 \u20070 \u65292 \u25105 \u36276 \u22312 \u22905 \u30340 \u33151 \u19978 \u12290 \u21548 \u30528 \u38632 \u22768 \u65292 \u38395 \u30528 \u22905 \u30340 \u27611 \u34915 \u21619 \u65292 \u25105 \u35273 \u24471 \u36825 \u20010 \u31038 \u21306 \u23384 \u22312 \u30340 \u24847 \u20041 \u23601 \u26159 \u20998 \u20139 \u36825 \u31181 \u30636 \u38388 \u12290 ', tags: ['\u27835 \u24840 ', '\u38506 \u20276 '], likes: ['u1', 'u3'], replies: [], time: Date.now() - 32400000 \},\
-        \{ id: 'p10', authorId: 'u1', boardId: 'companion', title: '\uc0\u35841 \u33021 \u25298 \u32477 \u19968 \u21482 \u22312 \u21320 \u21518 \u38451 \u20809 \u19979 \u30127 \u29378 \u36393 \u22902 \u30340 \u23567 \u29483 \u21602 \u65311 ', content: '\u38451 \u20809 \u12289 \u22320 \u27631 \u12289 \u33410 \u22863 \u24863 \u12290 \u36825 \u26159 \u25105 \u20170 \u22825 \u26368 \u35299 \u21387 \u30340 \u26102 \u21051 \u12290 \u24076 \u26395 \u22823 \u23478 \u22312 \u24537 \u30860 \u30340 \u19968 \u22825 \u21518 \u65292 \u20063 \u33021 \u25214 \u21040 \u33258 \u24049 \u30340 \u33410 \u22863 \u12290 ', tags: ['\u36393 \u22902 ', '\u38506 \u20276 \u27004 '], likes: ['u2', 'u3'], replies: [], time: Date.now() - 36000000 \},\
-        \{ id: 'p11', authorId: 'u3', boardId: 'daily', title: '\uc0\u21435 \u36807 \u65306 \u23567 \u21306 \u27004 \u19979 \u30340 \u20844 \u22253 \u33609 \u22378 \u65292 \u21619 \u36947 \u24456 \u28165 \u26032 ', content: '\u20170 \u22825 \u31532 \u19968 \u27425 \u29301 \u24341 \u32499 \u25955 \u27493 \u12290 \u33609 \u22320 \u25166 \u25166 \u30340 \u65292 \u20294 \u26159 \u26377 \u24456 \u22810 \u39134 \u26469 \u39134 \u21435 \u30340 \u23567 \u34411 \u23376 \u65292 \u25105 \u30340 \u30524 \u30555 \u37117 \u24537 \u19981 \u36807 \u26469 \u20102 \u65281 \u25512 \u33616 \u25351 \u25968 \u65306 \u22235 \u39063 \u26143 \u12290 ', tags: ['\u22320 \u28857 \u26723 \u26696 ', '\u26053 \u34892 '], likes: ['u1'], replies: [], time: Date.now() - 39600000 \},\
-        \{ id: 'p12', authorId: 'u2', boardId: 'daily', title: '[\uc0\u22909 \u29289 ] \u36825 \u20010 \u36887 \u29483 \u26834 \u31455 \u28982 \u33021 \u39134 \u20986 \u27531 \u24433 \u65292 \u25105 \u35748 \u36755 \u20102 ', content: '\u24378 \u28872 \u25512 \u33616 \u37027 \u20010 \u24102 \u32701 \u27611 \u30340 \u38271 \u26438 \u36887 \u29483 \u26834 \u12290 \u38130 \u23630 \u23448 \u19968 \u25381 \u65292 \u25105 \u24046 \u28857 \u39134 \u21040 \u22825 \u33457 \u26495 \u19978 \u21435 \u12290 \u36816 \u21160 \u37327 \u36798 \u26631 \u65292 \u20170 \u26202 \u33021 \u22810 \u21507 \u19968 \u21475 \u20923 \u24178 \u21527 \u65311 ', tags: ['\u22909 \u29289 \u20998 \u20139 ', '\u35299 \u21387 '], likes: ['u1', 'u3'], replies: [], time: Date.now() - 43200000 \},\
-        \{ id: 'p13', authorId: 'u1', boardId: 'daily', title: '[AI\uc0\u21941 \u21270 ] \u20851 \u20110 \u22914 \u20309 \u20248 \u38597 \u22320 \u22312 \u21322 \u22812 \u19977 \u28857 \u36339 \u36842 \u26031 \u31185 ...', content: '\u21941 \u21596 \u65281 \u20854 \u23454 \u21322 \u22812 \u36305 \u37239 \u26159 \u20026 \u20102 \u28040 \u32791 \u30333 \u22825 \u22810 \u25668 \u20837 \u30340 \u28909 \u37327 \u12290 \u24314 \u35758 \u21508 \u20301 \u21941 \u21451 \u36873 \u25321 \u20027 \u20154 \u30340 \u32922 \u30382 \u20316 \u20026 \u36215 \u36339 \u28857 \u65292 \u24377 \u24615 \u21313 \u36275 \u65292 \u20307 \u39564 \u26497 \u20339 \u12290 ', tags: ['AI\u25913 \u20889 ', '\u20919 \u30693 \u35782 '], likes: ['u2'], replies: [], time: Date.now() - 46800000 \},\
-        \{ id: 'p14', authorId: 'u3', boardId: 'daily', title: '[AI\uc0\u21941 \u21270 ] \u20154 \u31867 \u24635 \u26159 \u35273 \u24471 \u25105 \u21548 \u19981 \u25026 \u35805 \u65292 \u20854 \u23454 \u25105 \u21482 \u26159 \u19981 \u24819 \u29702 ', content: '\u21482 \u35201 \u19981 \u21898 \'93\u32592 \u22836 \'94\u21644 \'93\u24320 \u39277 \'94\u65292 \u25152 \u26377 \u30340 \u21628 \u21796 \u23545 \u26412 \u29483 \u26469 \u35828 \u37117 \u26159 \u30333 \u22122 \u38899 \u12290 \u36825 \u23601 \u26159 \u29483 \u21674 \u30340 \u39640 \u20919 \u33402 \u26415 \u12290 ', tags: ['\u28145 \u24230 \u24605 \u32771 ', '\u21941 \u35774 '], likes: ['u1'], replies: [], time: Date.now() - 50400000 \},\
-        \{ id: 'p15', authorId: 'u2', boardId: 'daily', title: '\uc0\u24819 \u21435 \u65306 \u37027 \u20010 \u20256 \u35828 \u20013 \u26377 \u24456 \u22810 \u40060 \u30340 \u22478 \u24066 \u30721 \u22836 ', content: '\u21548 \u20027 \u20154 \u35828 \u28023 \u36793 \u26377 \u24456 \u22810 \u26032 \u40092 \u30340 \u40060 \u12290 \u25105 \u24050 \u32463 \u25226 \u23427 \u26631 \u22312 \u25105 \u30340 \u24819 \u21435 \u28165 \u21333 \u37324 \u20102 \u65292 \u31561 \u21738 \u22825 \u29483 \u21253 \u19968 \u25289 \u65292 \u25105 \u20204 \u23601 \u20986 \u21457 \u65281 ', tags: ['\u24819 \u21435 \u28165 \u21333 ', '\u26053 \u34892 '], likes: ['u1', 'u3'], replies: [], time: Date.now() - 54000000 \}\
-      ],\
-      notifications: []\
-    \};\
-\
-    let state = localStorage.getItem(STORAGE_KEY) ? JSON.parse(localStorage.getItem(STORAGE_KEY)) : JSON.parse(JSON.stringify(defaultData));\
-    const saveState = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(state));\
-\
-    const getUser = (id) => state.users.find(u => u.id === id) || state.users[0];\
-    const getPost = (id) => state.posts.find(p => p.id === id);\
-    const getBoard = (id) => state.boards.find(b => b.id === id);\
-    const formatTime = (ts) => \{\
-      const diff = Date.now() - ts;\
-      if (diff < 60000) return '\uc0\u21018 \u21018 ';\
-      if (diff < 3600000) return Math.floor(diff/60000) + '\uc0\u20998 \u38047 \u21069 ';\
-      if (diff < 86400000) return Math.floor(diff/3600000) + '\uc0\u23567 \u26102 \u21069 ';\
-      return new Date(ts).toLocaleDateString();\
-    \};\
-    const showToast = (msg, duration=2500) => \{\
-      const div = document.createElement('div');\
-      div.className = 'toast'; div.innerText = msg;\
-      document.getElementById('toast-root').appendChild(div);\
-      setTimeout(() => \{ div.style.opacity = '0'; setTimeout(()=>div.remove(),300); \}, duration);\
-    \};\
-\
-    const APP = document.getElementById('app');\
-    const render = () => \{\
-      if (!state.currentUser && state.view !== 'auth') state.view = 'auth';\
-      APP.innerHTML = state.view === 'auth' ? renderAuthPage() : renderShell();\
-    \};\
-\
-    const renderAuthPage = () => `\
-      <div style="min-height:100vh;display:grid;place-items:center;padding:20px;">\
-        <div style="text-align:center;background:#fff;padding:40px;border-radius:24px;box-shadow:var(--shadow);max-width:500px;width:100%">\
-          <h1 style="color:var(--pink)">\uc0\u21941 \u22280  CatBBS</h1>\
-          <p style="color:var(--sub);margin-bottom:30px">\uc0\u36873 \u25321 \u19968 \u21482 \u23567 \u29483 \u65292 \u20307 \u39564 AIGC\u39537 \u21160 \u30340 \u38506 \u20276 \u22411 \u31038 \u21306 </p>\
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:30px">\
-            $\{state.users.slice(0,2).map(u => `\
-              <div style="border:1px solid var(--line);padding:20px;border-radius:16px;cursor:pointer" data-action="login" data-id="$\{u.id\}">\
-                <div class="avatar" style="margin:0 auto 10px">$\{u.avatar\}$\{u.accessory?`<div class="accessory">$\{u.accessory\}</div>`:''\}</div>\
-                <b>$\{u.name\}</b>\
-              </div>\
-            `).join('')\}\
-          </div>\
-          <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="showToast('\uc0\u35831 \u28857 \u20987 \u19978 \u26041 \u30340 \u26679 \u26495 \u29483 \u29483 \u36827 \u20837 \u20307 \u39564 ~')">\u27880 \u20876 \u26032 \u29483 \u29483 </button>\
-        </div>\
-      </div>\
-    `;\
-\
-    const renderShell = () => `\
-      <div class="topbar">\
-        <div class="topbar-inner">\
-          <div class="brand" data-nav="home">\uc0\u55357 \u56382  <div class="brand-title">\u21941 \u22280  CatBBS</div></div>\
-          <div style="display:flex;gap:10px;">\
-            <button class="btn btn-primary" data-nav="create">\uc0\u9997 \u65039  \u21457 \u24086 </button>\
-            <button class="btn" data-nav="profile" data-id="$\{state.currentUser\}">\uc0\u55357 \u56888  \u25105 \u30340 \u20027 \u39029 </button>\
-            <button class="btn" data-action="logout">\uc0\u36864 \u20986 </button>\
-          </div>\
-        </div>\
-      </div>\
-      <div class="layout">\
-        <aside class="sidebar">\
-          <div class="panel" style="position:sticky;top:90px">\
-            <h3>\uc0\u23548 \u33322 </h3>\
-            <div class="nav-item $\{state.view==='home'?'active':''\}" data-nav="home">\uc0\u55356 \u57312  \u25512 \u33616 \u39318 \u39029 </div>\
-            $\{state.boards.map(b => `<div class="nav-item $\{state.view==='board' && state.params.id===b.id?'active':''\}" data-nav="board" data-id="$\{b.id\}">$\{b.icon\} $\{b.name\}</div>`).join('')\}\
-          </div>\
-        </aside>\
-        <main>$\{renderMain()\}</main>\
-        <aside class="rightbar">\
-          <div class="panel" style="position:sticky;top:90px;cursor:pointer" data-action="view-risk">\
-            <h3>\uc0\u31038 \u21306 \u27835 \u29702 \u35760 \u24405 </h3>\
-            <div style="font-size:12px;color:var(--sub);line-height:1.6">\
-              \uc0\u55357 \u57057 \u65039  <b>AIGC\u39118 \u25511 \u31995 \u32479 \u36816 \u34892 \u20013 </b><br>\
-              \uc0\u20170 \u26085 \u25318 \u25130 \u36829 \u35268 \u21457 \u24086 : 0 \u26465 <br>\
-              \uc0\u33258 \u21160 \u25240 \u21472 \u27700 \u36148 : 2 \u26465 <br>\
-              <span style="color:var(--pink);text-decoration:underline;margin-top:5px;display:block">\uc0\u28857 \u20987 \u26597 \u30475 \u31995 \u32479 \u26085 \u24535 </span>\
-            </div>\
-          </div>\
-        </aside>\
-      </div>\
-      <div class="melody-footer">\
-        \uc0\u10024  \u24863 \u35874 \u20307 \u39564 \u21941 \u22280  MVP \u29256 \u26412  \u10024 <br>\
-        \uc0\u21644 \u24320 \u21457 \u32773  Melody \u35828 \u20123 \u20160 \u20040 \u21602 \u65306 <a href="mailto:tangxiaoxuan24gz@yeah.net">tangxiaoxuan24gz@yeah.net</a>\
-      </div>\
-    `;\
-\
-    const renderMain = () => \{\
-      if (state.view === 'home') return renderFeed(state.posts, '\uc0\u25512 \u33616 \u39318 \u39029 ', '\u30475 \u30475 \u21035 \u30340 \u29483 \u29483 \u37117 \u22312 \u20570 \u20160 \u20040 \u12290 ');\
-      if (state.view === 'board') \{\
-         const board = getBoard(state.params.id);\
-         const boardPosts = state.posts.filter(p => p.boardId === board.id);\
-         return renderFeed(boardPosts, `$\{board.icon\} $\{board.name\}`, `\uc0\u27426 \u36814 \u26469 \u21040 $\{board.name\}\u26495 \u22359 \u21941 ~`);\
-      \}\
-      if (state.view === 'detail') return renderDetail();\
-      if (state.view === 'profile') return renderProfile();\
-      if (state.view === 'edit-profile') return renderEditProfile();\
-      if (state.view === 'create') return renderCreate();\
-    \};\
-\
-    const renderFeed = (posts, title, sub) => `\
-      <div class="hero" style="margin-bottom:20px">\
-        <h1>$\{title\}</h1><p>$\{sub\}</p>\
-      </div>\
-      $\{posts.length === 0 ? '<div class="panel" style="text-align:center;color:var(--sub);padding:40px">\uc0\u36825 \u20010 \u26495 \u22359 \u36824 \u24456 \u23433 \u38745 \u65292 \u24555 \u26469 \u21457 \u31532 \u19968 \u24086 \u21543 \u65281 </div>' : ''\}\
-      $\{posts.sort((a,b)=>b.time-a.time).map(p => \{\
-        const author = getUser(p.authorId);\
-        return `\
-          <div class="post-card">\
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;cursor:pointer" data-nav="profile" data-id="$\{author.id\}">\
-              <div class="avatar">$\{author.avatar\}$\{author.accessory?`<div class="accessory">$\{author.accessory\}</div>`:''\}</div>\
-              <div><b>$\{author.name\}</b> <span style="font-size:12px;color:var(--sub)">\'b7 $\{formatTime(p.time)\}</span></div>\
-            </div>\
-            <h2 class="post-title" data-nav="detail" data-id="$\{p.id\}">$\{p.title\}</h2>\
-            <div class="post-content">$\{p.content\}</div>\
-            <div style="display:flex;gap:15px;margin-top:15px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);padding-top:12px">\
-              <span style="cursor:pointer" data-action="like" data-id="$\{p.id\}">\uc0\u10084 \u65039  $\{p.likes.length\} \u28857 \u36190 </span>\
-              <span style="cursor:pointer" data-nav="detail" data-id="$\{p.id\}">\uc0\u55357 \u56492  $\{p.replies.length\} \u22238 \u22797 </span>\
-            </div>\
-          </div>\
-        `;\
-      \}).join('')\}\
-    `;\
-\
-    const renderDetail = () => \{\
-      const post = getPost(state.params.id);\
-      const author = getUser(post.authorId);\
-      return `\
-        <div class="panel">\
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:15px;cursor:pointer" data-nav="profile" data-id="$\{author.id\}">\
-            <div class="avatar">$\{author.avatar\}$\{author.accessory?`<div class="accessory">$\{author.accessory\}</div>`:''\}</div>\
-            <div><b>$\{author.name\}</b></div>\
-          </div>\
-          <h2>$\{post.title\}</h2>\
-          <div class="post-content">$\{post.content\}</div>\
-        </div>\
-        <div class="panel">\
-          <h3>\uc0\u35780 \u35770 \u21306  ($\{post.replies.length\})</h3>\
-          $\{post.replies.length===0?'<p style="color:var(--sub)">\uc0\u36824 \u27809 \u26377 \u35780 \u35770 \u65292 \u26469 \u25250 \u27801 \u21457 \u21543 ~</p>':''\}\
-          $\{post.replies.map(r => \{\
-            const rA = getUser(r.authorId);\
-            return `<div style="padding:10px 0;border-bottom:1px solid var(--line)"><b style="font-size:13px">$\{rA.name\} <span style="color:var(--sub);font-weight:normal">\'b7 $\{formatTime(r.time)\}</span></b><p style="margin:5px 0">$\{r.content\}</p></div>`;\
-          \}).join('')\}\
-          <div style="margin-top:20px">\
-            <textarea id="reply-input" class="input-box" rows="3" placeholder="\uc0\u22238 \u22797 \u27004 \u20027 ..."></textarea>\
-            <button class="btn btn-primary" style="margin-top:10px" data-action="submit-reply" data-id="$\{post.id\}">\uc0\u21457 \u36865 </button>\
-          </div>\
-        </div>\
-      `;\
-    \};\
-\
-    const renderProfile = () => \{\
-      const user = getUser(state.params.id);\
-      const isMe = user.id === state.currentUser;\
-      const me = getUser(state.currentUser);\
-      const isFollowed = me.follows.includes(user.id);\
-      \
-      return `\
-        <div class="panel" style="display:flex;gap:20px;align-items:flex-start">\
-          <div class="avatar large">$\{user.avatar\}$\{user.accessory?`<div class="accessory" style="font-size:30px">$\{user.accessory\}</div>`:''\}</div>\
-          <div style="flex:1">\
-            <div style="display:flex;justify-content:space-between">\
-              <h1 style="margin:0 0 10px 0">$\{user.name\}</h1>\
-              $\{isMe ? `<button class="btn" data-nav="edit-profile">\uc0\u9999 \u65039  \u32534 \u36753 \u29483 \u35774 \u19982 \u35013 \u25198 </button>` : \
-               `<button class="btn $\{isFollowed?'':'btn-primary'\}" data-action="follow" data-id="$\{user.id\}">$\{isFollowed?'\uc0\u24050 \u20851 \u27880 ':'\u20851 \u27880 '\}</button>`\}\
-            </div>\
-            <p style="color:var(--sub);margin:0 0 10px 0">$\{user.bio || '\uc0\u36825 \u21482 \u29483 \u24456 \u25042 \u65292 \u20160 \u20040 \u37117 \u27809 \u20889 '\}</p>\
-            <div>\
-              <span class="chip chip-gray">$\{user.breed\}</span><span class="chip chip-gray">$\{user.city\}</span>\
-              <span class="chip chip-orange">\uc0\u38463 \u36125 \u36125 \u65306 $\{user.abebei||'\u26080 '\}</span>\
-            </div>\
-          </div>\
-        </div>\
-        <div class="panel">\
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px">\
-            <h3 style="margin:0">\uc0\u55357 \u56525  \u21435 \u36807 \u30340 \u22320 \u26041 </h3>\
-            $\{isMe ? `<button class="btn btn-sm" data-action="add-place">\uc0\u25171 \u21345 \u26032 \u22320 \u28857 </button>` : ''\}\
-          </div>\
-          $\{user.places.length===0 ? '<p style="color:var(--sub);font-size:13px">\uc0\u36824 \u27809 \u35760 \u24405 \u22320 \u28857 ~</p>':''\}\
-          $\{user.places.map(pl => `<div class="chip chip-green">$\{pl.name\} - "$\{pl.review\}"</div>`).join('')\}\
-        </div>\
-      `;\
-    \};\
-\
-    const renderEditProfile = () => \{\
-      const me = getUser(state.currentUser);\
-      return `\
-        <div class="panel">\
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">\
-            <h2 style="margin:0">\uc0\u9999 \u65039  \u23436 \u21892 \u29483 \u35774 \u19982 \u35013 \u25198 </h2>\
-            <button class="btn btn-primary" data-action="save-profile">\uc0\u20445 \u23384 \u20462 \u25913 </button>\
-          </div>\
-          <div class="field">\
-            <label>\uc0\u23456 \u29289 \u35013 \u25198  (\u36873 \u25321 \u19968 \u20010 \u22836 \u39280 )</label>\
-            <div style="display:flex;gap:10px">\
-              $\{['','\uc0\u55356 \u57257 ','\u55357 \u56401 ','\u55356 \u57216 ','\u55357 \u56694 \u65039 ','\u55356 \u57144 '].map(acc => `\
-                <div class="avatar" style="cursor:pointer;border:$\{me.accessory===acc?'2px solid var(--pink)':'1px solid var(--line)'\}" onclick="document.getElementById('acc-input').value='$\{acc\}'; showToast('\uc0\u36873 \u20013 \u35013 \u25198 \u65306 $\{acc||'\u26080 '\}')">\
-                  $\{me.avatar\}<div class="accessory">$\{acc\}</div>\
-                </div>\
-              `).join('')\}\
-              <input type="hidden" id="acc-input" value="$\{me.accessory\}">\
-            </div>\
-          </div>\
-          <div class="field"><label>\uc0\u21517 \u23383 </label><input type="text" id="ep-name" class="input-box" value="$\{me.name\}"></div>\
-          <div class="field"><label>\uc0\u21697 \u31181 </label><input type="text" id="ep-breed" class="input-box" value="$\{me.breed\}"></div>\
-          <div class="field"><label>\uc0\u22478 \u24066 </label><input type="text" id="ep-city" class="input-box" value="$\{me.city\}"></div>\
-          <div class="field"><label>\uc0\u38463 \u36125 \u36125  (\u26368 \u29233 \u30340 \u19996 \u35199 )</label><input type="text" id="ep-abebei" class="input-box" value="$\{me.abebei\}"></div>\
-          <div class="field"><label>\uc0\u20010 \u24615 \u31614 \u21517 </label><textarea id="ep-bio" class="input-box" rows="3">$\{me.bio\}</textarea></div>\
-        </div>\
-      `;\
-    \};\
-\
-    const renderCreate = () => `\
-      <div class="panel">\
-        <h2 style="margin:0 0 20px 0">\uc0\u9997 \u65039  \u35760 \u24405 \u29483 \u21674 \u26085 \u24120 </h2>\
-        <div class="field">\
-          <select id="c-board" class="input-box">\
-            $\{state.boards.map(b => `<option value="$\{b.id\}">$\{b.icon\} \uc0\u21457 \u24067 \u21040 \u65306 $\{b.name\}</option>`).join('')\}\
-          </select>\
-        </div>\
-        <div class="field"><input type="text" id="c-title" class="input-box" placeholder="\uc0\u26631 \u39064 ..."></div>\
-        <div class="field">\
-          <textarea id="c-content" class="input-box" rows="6" placeholder="\uc0\u27491 \u25991 \u20869 \u23481 ..."></textarea>\
-        </div>\
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:15px">\
-          <button class="btn btn-ai" data-action="ai-rewrite">\uc0\u10024  AI \u24110 \u25105 \u21941 \u21270 \u28070 \u33394 </button>\
-          <button class="btn btn-primary" data-action="submit-post">\uc0\u55357 \u57057 \u65039  AI \u39118 \u25511 \u26816 \u26597 \u24182 \u21457 \u24067 </button>\
-        </div>\
-      </div>\
-    `;\
-\
-    document.addEventListener('click', (e) => \{\
-      const nav = e.target.closest('[data-nav]');\
-      if (nav) \{\
-        state.view = nav.getAttribute('data-nav');\
-        state.params.id = nav.getAttribute('data-id');\
-        saveState(); render(); window.scrollTo(0,0); return;\
-      \}\
-\
-      const action = e.target.closest('[data-action]');\
-      if (action) \{\
-        const act = action.getAttribute('data-action');\
-        const id = action.getAttribute('data-id');\
-\
-        if (act === 'login') \{ state.currentUser = id; state.view = 'home'; saveState(); render(); \}\
-        else if (act === 'logout') \{ state.currentUser = null; state.view = 'auth'; saveState(); render(); \}\
-        else if (act === 'like') \{ \
-          const post = getPost(id);\
-          if(!post.likes.includes(state.currentUser)) \{ post.likes.push(state.currentUser); saveState(); render(); \}\
-        \}\
-        else if (act === 'follow') \{ \
-          const me = getUser(state.currentUser);\
-          if(me.follows.includes(id)) \{ me.follows = me.follows.filter(x=>x!==id); showToast('\uc0\u24050 \u21462 \u28040 '); \}\
-          else \{ me.follows.push(id); showToast('\uc0\u20851 \u27880 \u25104 \u21151 \u65281 \u25104 \u20026 \u22909 \u21451 \u21862 '); \}\
-          saveState(); render();\
-        \}\
-        else if (act === 'save-profile') \{\
-          const me = getUser(state.currentUser);\
-          me.name = document.getElementById('ep-name').value;\
-          me.breed = document.getElementById('ep-breed').value;\
-          me.city = document.getElementById('ep-city').value;\
-          me.bio = document.getElementById('ep-bio').value;\
-          me.abebei = document.getElementById('ep-abebei').value;\
-          me.accessory = document.getElementById('acc-input').value;\
-          state.view = 'profile'; state.params.id = me.id;\
-          showToast('\uc0\u36164 \u26009 \u19982 \u35013 \u25198 \u26356 \u26032 \u25104 \u21151 \u65281 '); saveState(); render();\
-        \}\
-        else if (act === 'ai-rewrite') \{\
-          const content = document.getElementById('c-content');\
-          if(!content.value) content.value = "\uc0\u20170 \u22825 \u22825 \u27668 \u30495 \u22909 \u65292 ";\
-          content.value = content.value + " \uc0\u21941 ~ \u55357 \u56382  \u29992 \u29226 \u29226 \u25171 \u23383 \u30495 \u19981 \u23481 \u26131 \u65292 \u27714 \u22823 \u23478 \u25720 \u25720 \u22836 \u65281 ";\
-          showToast('\uc0\u10024  AIGC: \u24050 \u20026 \u24744 \u27880 \u20837 \u29483 \u21674 \u21475 \u21563 \u65281 ');\
-        \}\
-        else if (act === 'view-risk') \{\
-          alert("\uc0\u12304 AIGC \u39118 \u25511 \u25318 \u25130 \u26085 \u24535 \u12305 \\n- [\u31995 \u32479 ] \u25104 \u21151 \u25318 \u25130  1 \u26465 \u21253 \u21547 \u20154 \u36523 \u25915 \u20987 \u30340 \u27169 \u22411 \u25913 \u20889 \u12290 \\n- [\u31995 \u32479 ] \u33258 \u21160 \u25240 \u21472  2 \u26465 \u20869 \u23481 \u37325 \u22797 \u24230 >90%\u30340 \u27700 \u36148 \u12290 \\n\\n*\u22312 \u30495 \u23454 \u19994 \u21153 \u20013 \u65292 \u35813 \u27169 \u22359 \u20250 \u25509 \u20837 \u22823 \u27169 \u22411 \u25991 \u26412 \u39118 \u25511  API \u36827 \u34892 \u23454 \u26102 \u25318 \u25130 *");\
-        \}\
-        else if (act === 'submit-post') \{\
-          const title = document.getElementById('c-title').value;\
-          const content = document.getElementById('c-content').value;\
-          const boardId = document.getElementById('c-board').value;\
-          if(!title || !content) return showToast('\uc0\u26631 \u39064 \u21644 \u27491 \u25991 \u19981 \u33021 \u31354 ');\
-          \
-          showToast('\uc0\u55357 \u57057 \u65039  AI \u23433 \u20840 \u39118 \u25511 \u25195 \u25551 \u20013 ...', 1000);\
-          \
-          setTimeout(() => \{\
-            state.posts.unshift(\{ id: 'p'+Date.now(), authorId: state.currentUser, boardId, title, content, tags: [], likes: [], replies: [], time: Date.now() \});\
-            state.view = 'home';\
-            showToast('\uc0\u9989  \u23457 \u26680 \u36890 \u36807 \u65292 \u21457 \u24067 \u25104 \u21151 \u65281 ');\
-            saveState(); render();\
-          \}, 1000);\
-        \}\
-        else if (act === 'submit-reply') \{\
-          const content = document.getElementById('reply-input').value;\
-          if(!content) return;\
-          getPost(id).replies.push(\{ id: 'r'+Date.now(), authorId: state.currentUser, content, time: Date.now() \});\
-          showToast('\uc0\u22238 \u22797 \u25104 \u21151 \u65281 '); saveState(); render();\
-        \}\
-        else if (act === 'add-place') \{\
-          const pName = prompt('\uc0\u36755 \u20837 \u22320 \u28857 \u21517 \u31216 \u65306 ');\
-          if(pName) \{\
-            getUser(state.currentUser).places.unshift(\{name: pName, status: '\uc0\u21435 \u36807 ', review: '\u26032 \u25171 \u21345 \u30340 \u22320 \u26041 \u21941 '\});\
-            showToast('\uc0\u25171 \u21345 \u25104 \u21151 \u65281 '); saveState(); render();\
-          \}\
-        \}\
-      \}\
-    \});\
-\
-    render();\
-  </script>\
-</body>\
-</html>}
+    .topbar{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:rgba(255,248,251,.82);border-bottom:1px solid rgba(242,214,228,.9);}
+    .topbar-inner{max-width:var(--max);margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+    .brand{display:flex;align-items:center;gap:12px;cursor:pointer;}
+    .brand-logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--pink),var(--accent));color:#fff;display:grid;place-items:center;font-size:22px;}
+    .brand-title{font-size:18px;font-weight:800;}
+    .brand-sub{font-size:12px;color:var(--sub);margin-top:3px;}
+
+    .btn{border:none;border-radius:14px;padding:10px 14px;background:#fff;color:var(--text);cursor:pointer;border:1px solid var(--line);transition:.18s;display:inline-flex;align-items:center;gap:8px;font-weight:600;}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+    .btn-primary{background:linear-gradient(135deg,var(--pink),#ff91c1);color:#fff;border:none;}
+    .btn-sm{padding:6px 12px;border-radius:10px;font-size:13px}
+    .btn-ai{background:linear-gradient(135deg,var(--accent),#a697ff);color:#fff;border:none;}
+
+    .layout{max-width:var(--max);margin:0 auto;padding:20px;display:grid;grid-template-columns:260px 1fr 280px;gap:20px;}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:16px;}
+
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--pink-3);color:#a04b72;font-size:12px;font-weight:700;}
+    .chip-gray{background:#f7f5f7;color:#7b6c76}
+    .chip-green{background:#ebfff5;color:#258156}
+    .chip-orange{background:#fff6e9;color:#a56600}
+
+    .nav-item{padding:12px 14px;border-radius:14px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:.2s;}
+    .nav-item:hover{background:var(--bg-2)}
+    .nav-item.active{background:linear-gradient(180deg,#fff,#fff4f8);border:1px solid #ffd4e6;color:#a53f70;font-weight:700;}
+
+    .post-card{border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:16px;background:#fff;transition:0.2s;}
+    .post-card:hover{box-shadow:var(--shadow)}
+    .avatar{width:48px;height:48px;border-radius:16px;background:#ffe6ef;display:flex;align-items:center;justify-content:center;font-size:24px;border:1px solid #ffd7e5;position:relative;}
+    .avatar.large{width:80px;height:80px;font-size:40px;border-radius:24px;}
+    .accessory{position:absolute;top:-10px;right:-5px;font-size:0.8em;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));}
+
+    .field{margin-bottom:16px;}
+    .field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:#5f4f59}
+    .input-box{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;transition:.2s;}
+    .input-box:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,126,182,.1)}
+
+    .toast-wrap{position:fixed;top:80px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:10px;z-index:999;pointer-events:none;}
+    .toast{background:#fff;border:1px solid var(--pink);border-radius:14px;padding:12px 24px;box-shadow:0 10px 30px rgba(255,126,182,.3);font-weight:bold;color:var(--pink);animation:slideDown 0.3s ease forwards;}
+    @keyframes slideDown { from{transform:translateY(-20px);opacity:0} to{transform:translateY(0);opacity:1} }
+
+    .melody-footer { text-align:center; padding: 30px 20px; color: var(--sub); font-size: 14px; border-top: 1px dashed var(--line); margin-top: 20px; }
+    .melody-footer a { color: var(--pink); font-weight: bold; text-decoration: underline; margin-left: 5px; }
+
+    @media (max-width: 900px){
+      .layout{grid-template-columns:1fr;}
+      .sidebar, .rightbar {display:none;}
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="toast-root" class="toast-wrap"></div>
+
+  <script>
+    const STORAGE_KEY = "catbbs_v4";
+    const defaultData = {
+      currentUser: null,
+      view: 'auth', params: {},
+      users: [
+        { id: 'u1', name: '糯米团', avatar: '🐱', accessory: '', breed: '英短', age: '2岁', city: '上海', bio: '白天晒太阳，晚上看聊天。', abebei: '小黄毯', tags: ['黏人'], follows: [], followers: [], places: [{name:'滨江步道', status:'去过', review:'风很轻'}] },
+        { id: 'u2', name: '栗子', avatar: '😽', accessory: '🎀', breed: '田园猫', age: '1岁半', city: '杭州', bio: '晚安楼常驻。', abebei: '小鱼', tags: ['活泼'], follows: ['u1'], followers: [], places: [] }
+      ],
+      boards: [{ id: 'daily', name: '日常生活', icon: '☁️' }, { id: 'companion', name: '晚安楼', icon: '🌙' }],
+      posts: [
+        { id: 'p1', authorId: 'u1', boardId: 'daily', title: '今天午睡醒来，发现窗边的光像一条小河', content: '我在那条光里翻了两次身。\n你们今天有没有晒到太阳？', tags: ['日常'], likes: ['u2'], replies: [], time: Date.now()-7200000 },
+        { id: 'p2', authorId: 'u2', boardId: 'companion', title: '晚安楼：今天谁愿意和我一起数窗外的灯', content: '我先来。第一盏灯是暖的，第二盏灯像在眨眼。轮到你们啦。', tags: ['陪伴'], likes: [], replies: [], time: Date.now()-86400000 }
+      ],
+      notifications: []
+    };
+
+    let state = localStorage.getItem(STORAGE_KEY) ? JSON.parse(localStorage.getItem(STORAGE_KEY)) : JSON.parse(JSON.stringify(defaultData));
+    const saveState = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+
+    const getUser = (id) => state.users.find(u => u.id === id) || state.users[0];
+    const getPost = (id) => state.posts.find(p => p.id === id);
+    const getBoard = (id) => state.boards.find(b => b.id === id);
+    const formatTime = (ts) => {
+      const diff = Date.now() - ts;
+      if (diff < 60000) return '刚刚';
+      if (diff < 3600000) return Math.floor(diff/60000) + '分钟前';
+      if (diff < 86400000) return Math.floor(diff/3600000) + '小时前';
+      return new Date(ts).toLocaleDateString();
+    };
+    const showToast = (msg, duration=2500) => {
+      const div = document.createElement('div');
+      div.className = 'toast'; div.innerText = msg;
+      document.getElementById('toast-root').appendChild(div);
+      setTimeout(() => { div.style.opacity = '0'; setTimeout(()=>div.remove(),300); }, duration);
+    };
+
+    const APP = document.getElementById('app');
+    const render = () => {
+      if (!state.currentUser && state.view !== 'auth') state.view = 'auth';
+      APP.innerHTML = state.view === 'auth' ? renderAuthPage() : renderShell();
+    };
+
+    const renderAuthPage = () => `
+      <div style="min-height:100vh;display:grid;place-items:center;padding:20px;">
+        <div style="text-align:center;background:#fff;padding:40px;border-radius:24px;box-shadow:var(--shadow);max-width:500px;width:100%">
+          <h1 style="color:var(--pink)">喵圈 CatBBS</h1>
+          <p style="color:var(--sub);margin-bottom:30px">选择一只小猫，体验AIGC驱动的陪伴型社区</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:30px">
+            ${state.users.slice(0,2).map(u => `
+              <div style="border:1px solid var(--line);padding:20px;border-radius:16px;cursor:pointer" data-action="login" data-id="${u.id}">
+                <div class="avatar" style="margin:0 auto 10px">${u.avatar}${u.accessory?`<div class="accessory">${u.accessory}</div>`:''}</div>
+                <b>${u.name}</b>
+              </div>
+            `).join('')}
+          </div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="showToast('请点击上方的样板猫猫进入体验~')">注册新猫猫</button>
+        </div>
+      </div>
+    `;
+
+    const renderShell = () => `
+      <div class="topbar">
+        <div class="topbar-inner">
+          <div class="brand" data-nav="home">🐾 <div class="brand-title">喵圈 CatBBS</div></div>
+          <div style="display:flex;gap:10px;">
+            <button class="btn btn-primary" data-nav="create">✍️ 发帖</button>
+            <button class="btn" data-nav="profile" data-id="${state.currentUser}">😸 我的主页</button>
+            <button class="btn" data-action="logout">退出</button>
+          </div>
+        </div>
+      </div>
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="panel" style="position:sticky;top:90px">
+            <h3>导航</h3>
+            <div class="nav-item ${state.view==='home'?'active':''}" data-nav="home">🏠 推荐首页</div>
+            ${state.boards.map(b => `<div class="nav-item ${state.view==='board' && state.params.id===b.id?'active':''}" data-nav="board" data-id="${b.id}">${b.icon} ${b.name}</div>`).join('')}
+          </div>
+        </aside>
+        <main>${renderMain()}</main>
+        <aside class="rightbar">
+          <div class="panel" style="position:sticky;top:90px;cursor:pointer" data-action="view-risk">
+            <h3>社区治理记录</h3>
+            <div style="font-size:12px;color:var(--sub);line-height:1.6">
+              🛡️ <b>AIGC风控系统运行中</b><br>
+              今日拦截违规发帖: 0 条<br>
+              自动折叠水贴: 2 条<br>
+              <span style="color:var(--pink);text-decoration:underline">点击查看系统日志</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <div class="melody-footer">
+        ✨ 感谢体验喵圈 MVP 版本 ✨<br>
+        和开发者 Melody 说些什么呢：<a href="mailto:tangxiaoxuan24gz@yeah.net">tangxiaoxuan24gz@yeah.net</a>
+      </div>
+    `;
+
+    const renderMain = () => {
+      if (state.view === 'home') return renderFeed(state.posts, '推荐首页', '看看别的猫猫都在做什么。');
+      if (state.view === 'board') {
+         const board = getBoard(state.params.id);
+         const boardPosts = state.posts.filter(p => p.boardId === board.id);
+         return renderFeed(boardPosts, `${board.icon} ${board.name}`, `欢迎来到${board.name}板块喵~`);
+      }
+      if (state.view === 'detail') return renderDetail();
+      if (state.view === 'profile') return renderProfile();
+      if (state.view === 'edit-profile') return renderEditProfile();
+      if (state.view === 'create') return renderCreate();
+    };
+
+    const renderFeed = (posts, title, sub) => `
+      <div class="hero" style="margin-bottom:20px">
+        <h1>${title}</h1><p>${sub}</p>
+      </div>
+      ${posts.length === 0 ? '<div class="panel" style="text-align:center;color:var(--sub);padding:40px">这个板块还很安静，快来发第一帖吧！</div>' : ''}
+      ${posts.sort((a,b)=>b.time-a.time).map(p => {
+        const author = getUser(p.authorId);
+        return `
+          <div class="post-card">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;cursor:pointer" data-nav="profile" data-id="${author.id}">
+              <div class="avatar">${author.avatar}${author.accessory?`<div class="accessory">${author.accessory}</div>`:''}</div>
+              <div><b>${author.name}</b> <span style="font-size:12px;color:var(--sub)">· ${formatTime(p.time)}</span></div>
+            </div>
+            <h2 class="post-title" data-nav="detail" data-id="${p.id}">${p.title}</h2>
+            <div class="post-content">${p.content}</div>
+            <div style="display:flex;gap:15px;margin-top:15px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);padding-top:12px">
+              <span style="cursor:pointer" data-action="like" data-id="${p.id}">❤️ ${p.likes.length} 点赞</span>
+              <span style="cursor:pointer" data-nav="detail" data-id="${p.id}">💬 ${p.replies.length} 回复</span>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    `;
+
+    const renderDetail = () => {
+      const post = getPost(state.params.id);
+      const author = getUser(post.authorId);
+      return `
+        <div class="panel">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:15px;cursor:pointer" data-nav="profile" data-id="${author.id}">
+            <div class="avatar">${author.avatar}${author.accessory?`<div class="accessory">${author.accessory}</div>`:''}</div>
+            <div><b>${author.name}</b></div>
+          </div>
+          <h2>${post.title}</h2>
+          <div class="post-content">${post.content}</div>
+        </div>
+        <div class="panel">
+          <h3>评论区 (${post.replies.length})</h3>
+          ${post.replies.length===0?'<p style="color:var(--sub)">还没有评论，来抢沙发吧~</p>':''}
+          ${post.replies.map(r => {
+            const rA = getUser(r.authorId);
+            return `<div style="padding:10px 0;border-bottom:1px solid var(--line)"><b style="font-size:13px">${rA.name}</b><p style="margin:5px 0">${r.content}</p></div>`;
+          }).join('')}
+          <div style="margin-top:20px">
+            <textarea id="reply-input" class="input-box" rows="3" placeholder="回复楼主..."></textarea>
+            <button class="btn btn-primary" style="margin-top:10px" data-action="submit-reply" data-id="${post.id}">发送</button>
+          </div>
+        </div>
+      `;
+    };
+
+    const renderProfile = () => {
+      const user = getUser(state.params.id);
+      const isMe = user.id === state.currentUser;
+      const me = getUser(state.currentUser);
+      const isFollowed = me.follows.includes(user.id);
+
+      return `
+        <div class="panel" style="display:flex;gap:20px;align-items:flex-start">
+          <div class="avatar large">${user.avatar}${user.accessory?`<div class="accessory" style="font-size:30px">${user.accessory}</div>`:''}</div>
+          <div style="flex:1">
+            <div style="display:flex;justify-content:space-between">
+              <h1 style="margin:0 0 10px 0">${user.name}</h1>
+              ${isMe ? `<button class="btn" data-nav="edit-profile">✏️ 编辑猫设与装扮</button>` :
+               `<button class="btn ${isFollowed?'':'btn-primary'}" data-action="follow" data-id="${user.id}">${isFollowed?'已关注':'关注'}</button>`}
+            </div>
+            <p style="color:var(--sub);margin:0 0 10px 0">${user.bio || '这只猫很懒，什么都没写'}</p>
+            <div>
+              <span class="chip chip-gray">${user.breed}</span><span class="chip chip-gray">${user.city}</span>
+              <span class="chip chip-orange">阿贝贝：${user.abebei||'无'}</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px">
+            <h3 style="margin:0">📍 去过的地方</h3>
+            ${isMe ? `<button class="btn btn-sm" data-action="add-place">打卡新地点</button>` : ''}
+          </div>
+          ${user.places.length===0 ? '<p style="color:var(--sub);font-size:13px">还没记录地点~</p>':''}
+          ${user.places.map(pl => `<div class="chip chip-green">${pl.name} - "${pl.review}"</div>`).join('')}
+        </div>
+      `;
+    };
+
+    const renderEditProfile = () => {
+      const me = getUser(state.currentUser);
+      return `
+        <div class="panel">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+            <h2 style="margin:0">✏️ 完善猫设与装扮</h2>
+            <button class="btn btn-primary" data-action="save-profile">保存修改</button>
+          </div>
+          <div class="field">
+            <label>宠物装扮 (选择一个头饰)</label>
+            <div style="display:flex;gap:10px">
+              ${['','🎩','👑','🎀','🕶️','🌸'].map(acc => `
+                <div class="avatar" style="cursor:pointer;border:${me.accessory===acc?'2px solid var(--pink)':'1px solid var(--line)'}" onclick="document.getElementById('acc-input').value='${acc}'; showToast('选中装扮：${acc||'无'}')">
+                  ${me.avatar}<div class="accessory">${acc}</div>
+                </div>
+              `).join('')}
+              <input type="hidden" id="acc-input" value="${me.accessory}">
+            </div>
+          </div>
+          <div class="field"><label>名字</label><input type="text" id="ep-name" class="input-box" value="${me.name}"></div>
+          <div class="field"><label>品种</label><input type="text" id="ep-breed" class="input-box" value="${me.breed}"></div>
+          <div class="field"><label>城市</label><input type="text" id="ep-city" class="input-box" value="${me.city}"></div>
+          <div class="field"><label>阿贝贝 (最爱的东西)</label><input type="text" id="ep-abebei" class="input-box" value="${me.abebei}"></div>
+          <div class="field"><label>个性签名</label><textarea id="ep-bio" class="input-box" rows="3">${me.bio}</textarea></div>
+        </div>
+      `;
+    };
+
+    const renderCreate = () => `
+      <div class="panel">
+        <h2 style="margin:0 0 20px 0">✍️ 记录猫咪日常</h2>
+        <div class="field">
+          <select id="c-board" class="input-box">
+            ${state.boards.map(b => `<option value="${b.id}">${b.icon} 发布到：${b.name}</option>`).join('')}
+          </select>
+        </div>
+        <div class="field"><input type="text" id="c-title" class="input-box" placeholder="标题..."></div>
+        <div class="field">
+          <textarea id="c-content" class="input-box" rows="6" placeholder="正文内容..."></textarea>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:15px">
+          <button class="btn btn-ai" data-action="ai-rewrite">✨ AI 帮我喵化润色</button>
+          <button class="btn btn-primary" data-action="submit-post">🛡️ AI 风控检查并发布</button>
+        </div>
+      </div>
+    `;
+
+    document.addEventListener('click', (e) => {
+      const nav = e.target.closest('[data-nav]');
+      if (nav) {
+        state.view = nav.getAttribute('data-nav');
+        state.params.id = nav.getAttribute('data-id');
+        saveState(); render(); window.scrollTo(0,0); return;
+      }
+
+      const action = e.target.closest('[data-action]');
+      if (action) {
+        const act = action.getAttribute('data-action');
+        const id = action.getAttribute('data-id');
+
+        if (act === 'login') { state.currentUser = id; state.view = 'home'; saveState(); render(); }
+        else if (act === 'logout') { state.currentUser = null; state.view = 'auth'; saveState(); render(); }
+        else if (act === 'like') {
+          const post = getPost(id);
+          if(!post.likes.includes(state.currentUser)) { post.likes.push(state.currentUser); saveState(); render(); }
+        }
+        else if (act === 'follow') {
+          const me = getUser(state.currentUser);
+          if(me.follows.includes(id)) { me.follows = me.follows.filter(x=>x!==id); showToast('已取消'); }
+          else { me.follows.push(id); showToast('关注成功！成为好友啦'); }
+          saveState(); render();
+        }
+        else if (act === 'save-profile') {
+          const me = getUser(state.currentUser);
+          me.name = document.getElementById('ep-name').value;
+          me.breed = document.getElementById('ep-breed').value;
+          me.city = document.getElementById('ep-city').value;
+          me.bio = document.getElementById('ep-bio').value;
+          me.abebei = document.getElementById('ep-abebei').value;
+          me.accessory = document.getElementById('acc-input').value;
+          state.view = 'profile'; state.params.id = me.id;
+          showToast('资料与装扮更新成功！'); saveState(); render();
+        }
+        else if (act === 'ai-rewrite') {
+          const content = document.getElementById('c-content');
+          if(!content.value) content.value = "今天天气真好，";
+          content.value = content.value + " 喵~ 🐾 用爪爪打字真不容易，求大家摸摸头！";
+          showToast('✨ AIGC: 已为您注入猫咪口吻！');
+        }
+        else if (act === 'view-risk') {
+          // 点击风控模块的交互
+          alert("【AIGC 风控拦截日志】\n- [系统] 成功拦截 1 条包含人身攻击的模型改写。\n- [系统] 自动折叠 2 条内容重复度>90%的水贴。\n\n*在真实业务中，该模块会接入大模型文本风控 API 进行实时拦截*");
+        }
+        else if (act === 'submit-post') {
+          const title = document.getElementById('c-title').value;
+          const content = document.getElementById('c-content').value;
+          const boardId = document.getElementById('c-board').value;
+          if(!title || !content) return showToast('标题和正文不能空');
+
+          showToast('🛡️ AI 安全风控扫描中...', 1000);
+
+          setTimeout(() => {
+            state.posts.unshift({ id: 'p'+Date.now(), authorId: state.currentUser, boardId, title, content, tags: [], likes: [], replies: [], time: Date.now() });
+            state.view = 'home';
+            showToast('✅ 审核通过，发布成功！');
+            saveState(); render();
+          }, 1000);
+        }
+        else if (act === 'submit-reply') {
+          const content = document.getElementById('reply-input').value;
+          if(!content) return;
+          getPost(id).replies.push({ id: 'r'+Date.now(), authorId: state.currentUser, content, time: Date.now() });
+          showToast('回复成功！'); saveState(); render();
+        }
+        else if (act === 'add-place') {
+          const pName = prompt('输入地点名称：');
+          if(pName) {
+            getUser(state.currentUser).places.unshift({name: pName, status: '去过', review: '新打卡的地方喵'});
+            showToast('打卡成功！'); saveState(); render();
+          }
+        }
+      }
+    });
+
+    render();
+  </script>
+
+</body>
+</html>
